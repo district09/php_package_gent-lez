@@ -10,7 +10,7 @@ use DigipolisGent\Value\ValueInterface;
 /**
  * Collection of features.
  */
-class Features extends CollectionAbstract
+class Features extends CollectionAbstract implements FeaturesInterface
 {
 
     /**
@@ -50,13 +50,30 @@ class Features extends CollectionAbstract
     }
 
     /**
-     * Get the resource.
-     *
-     * @return string
+     * @inheritDoc
      */
     public function resource(): string
     {
         return $this->resource;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function features(): array
+    {
+        /** @var \District09\Gent\Lez\Value\Feature[] $features */
+        $features = $this->values;
+
+        return $features;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function hasFeatures(): bool
+    {
+        return $this->getIterator()->count() > 0;
     }
 
     /**

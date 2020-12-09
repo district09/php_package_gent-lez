@@ -24,13 +24,16 @@ class FeaturesTest extends TestCase
      */
     public function itIsCreatedFromResourceAndFeatureItems(): void
     {
+        $featureItems = $this->createFeatureItems();
+
         $features = Features::fromResourceAndFeatures(
             'FooBar',
-            ...$this->createFeatureItems()
+            ...$featureItems
         );
 
         self::assertSame('FooBar', $features->resource());
-        self::assertCount(2, $features->getIterator());
+        self::assertTrue($features->hasFeatures());
+        self::assertSame($featureItems, $features->features());
     }
 
     /**
