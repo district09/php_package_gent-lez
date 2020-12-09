@@ -21,76 +21,18 @@ class PolygonTest extends TestCase
      */
     public function itIsCreatedFromCoordinates(): void
     {
-        $coordinates = Coordinates::fromLambert72(
-            Lambert72::fromXYPosition(0, 0),
-            Lambert72::fromXYPosition(100, 100),
-            Lambert72::fromXYPosition(0, 0)
+        $polygon = Polygon::fromCoordinates(
+            Coordinates::fromLambert72(
+                Lambert72::fromXYPosition(0, 0),
+                Lambert72::fromXYPosition(100, 100),
+                Lambert72::fromXYPosition(0, 0),
+            ),
+            Coordinates::fromLambert72(
+                Lambert72::fromXYPosition(0, 0),
+            ),
         );
 
-        $polygon = Polygon::fromCoordinates($coordinates);
-
-        self::assertSame($coordinates, $polygon->coordinates());
-    }
-
-    /**
-     * Same value if both polygons share the same coordinates.
-     *
-     * @param \District09\Gent\Lez\Value\Geometry\Coordinates $coordinates
-     *   Coordinates of the polygon to compare.
-     * @param \District09\Gent\Lez\Value\Geometry\Coordinates $otherCoordinates
-     *   Coordinates ot the polygon to compare to.
-     * @param bool $same
-     *   Should both polygons be the same.
-     *
-     * @dataProvider coordinatesProvider
-     *
-     * @test
-     */
-    public function itIsSamePolygonWhenTheyShareSameCoordinates(
-        Coordinates $coordinates,
-        Coordinates $otherCoordinates,
-        bool $same
-    ): void {
-        $polygon = Polygon::fromCoordinates($coordinates);
-        $otherPolygon = Polygon::fromCoordinates($otherCoordinates);
-
-        self::assertSame($same, $polygon->sameValueAs($otherPolygon));
-    }
-
-    /**
-     * Coordinates data provider.
-     *
-     * @return array
-     *   Rows containing:
-     *   - Coordinates of the polygon to compare.
-     *   - Coordinates ot the polygon to compare to.
-     *   - Should both polygons be the same?
-     */
-    public function coordinatesProvider(): array
-    {
-        $coordinates = Coordinates::fromLambert72(
-            Lambert72::fromXYPosition(0, 0),
-            Lambert72::fromXYPosition(100, 100),
-            Lambert72::fromXYPosition(0, 0),
-        );
-        $otherCoordinates = Coordinates::fromLambert72(
-            Lambert72::fromXYPosition(100, 100),
-            Lambert72::fromXYPosition(0, 0),
-            Lambert72::fromXYPosition(100, 100),
-        );
-
-        return [
-            'Not the same when the coordinates are different' => [
-                $coordinates,
-                $otherCoordinates,
-                false,
-            ],
-            'Same when polygons share same coordinates' => [
-                $coordinates,
-                $coordinates,
-                true,
-            ],
-        ];
+        self::assertCount(2, $polygon->getIterator());
     }
 
     /**
@@ -98,18 +40,21 @@ class PolygonTest extends TestCase
      *
      * @test
      */
-    public function itUsesCoordinatesStringAsString(): void
+    public function itUsesCoordinatesStringsAsString(): void
     {
         $polygon = Polygon::fromCoordinates(
             Coordinates::fromLambert72(
                 Lambert72::fromXYPosition(0, 0),
                 Lambert72::fromXYPosition(100, 100),
                 Lambert72::fromXYPosition(0, 0),
-            )
+            ),
+            Coordinates::fromLambert72(
+                Lambert72::fromXYPosition(0, 0),
+            ),
         );
 
         self::assertSame(
-            '0 0;100 100;0 0',
+            '0 0;100 100;0 0' . PHP_EOL . '0 0',
             (string) $polygon
         );
     }

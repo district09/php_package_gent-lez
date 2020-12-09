@@ -12,10 +12,4 @@ use DigipolisGent\Value\ValueInterface;
 interface GeometryInterface extends ValueInterface
 {
 
-    /**
-     * Get the coordinates.
-     *
-     * @return \District09\Gent\Lez\Value\Geometry\Coordinates
-     */
-    public function coordinates(): Coordinates;
 }

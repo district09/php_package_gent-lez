@@ -4,21 +4,13 @@ declare(strict_types=1);
 
 namespace District09\Gent\Lez\Value\Geometry;
 
-use DigipolisGent\Value\ValueAbstract;
-use DigipolisGent\Value\ValueInterface;
+use DigipolisGent\Value\CollectionAbstract;
 
 /**
  * Polygon geometrical figure.
  */
-final class Polygon extends ValueAbstract implements GeometryInterface
+final class Polygon extends CollectionAbstract implements GeometryInterface
 {
-
-    /**
-     * The coordinates.
-     *
-     * @var \District09\Gent\Lez\Value\Geometry\Coordinates
-     */
-    private $coordinates;
 
     /**
      * Named constructors only.
@@ -31,45 +23,34 @@ final class Polygon extends ValueAbstract implements GeometryInterface
     }
 
     /**
-     * Create polygon from its coordinates.
+     * Create polygon from one or more coordinates collections..
      *
-     * @param \District09\Gent\Lez\Value\Geometry\Coordinates $coordinates
+     * @param \District09\Gent\Lez\Value\Geometry\Coordinates ...$coordinates
      *   The coordinates of the polygon.
      *
      * @return \District09\Gent\Lez\Value\Geometry\Polygon
      */
-    public static function fromCoordinates(Coordinates $coordinates): Polygon
+    public static function fromCoordinates(Coordinates ...$coordinates): Polygon
     {
         $polygon = new Polygon();
-        $polygon->coordinates = $coordinates;
+        $polygon->values = $coordinates;
 
         return $polygon;
-    }
-
-    public function coordinates(): Coordinates
-    {
-        return $this->coordinates;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function sameValueAs(ValueInterface $object): bool
-    {
-        /** @var \District09\Gent\Lez\Value\Geometry\Polygon $otherPolygon */
-        $otherPolygon = $object;
-
-        return $this->sameValueTypeAs($otherPolygon)
-            && $this->coordinates()->sameValueAs($otherPolygon->coordinates());
     }
 
     /**
      * @inheritDoc
      *
-     * This will return the string representation of the coordinates.
+     * This will return the string representation of the coordinates separated
+     * by a newline character.
      */
     public function __toString(): string
     {
-        return (string) $this->coordinates();
+        $items = [];
+        foreach ($this->values as $coordinates) {
+            $items[] = (string) $coordinates;
+        }
+
+        return implode(PHP_EOL, $items);
     }
 }
