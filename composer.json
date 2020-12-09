@@ -1,0 +1,56 @@
+{
+    "name": "district09/gent-lez",
+    "description": "Check if given coordinates are within the Gent LEZ (Low Emission Zone).",
+    "keywords": [
+        "district09",
+        "services",
+        "gent",
+        "stad gent",
+        "LEZ"
+    ],
+    "type": "library",
+    "homepage": "https://github.com/digipolisgent/php_package_d09-gent-lez",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Peter Decuyper",
+            "email": "peter.decuyper@district09.gent"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "District09\\Gent\\Lez\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "District09\\Tests\\Gent\\Lez\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.3",
+        "proj4php/proj4php": "^2.0",
+        "digipolisgent/value": "^1.1|^2.0",
+        "ext-json": "*",
+        "webmozart/assert": "^1.9"
+    },
+    "scripts": {
+        "coverage": "vendor/bin/phpunit --configuration=phpunit.qa-php.xml --coverage-html build/coverage",
+        "grumphp": "vendor/bin/grumphp run",
+        "phpcpd": "vendor/bin/grumphp run --tasks=phpcpd",
+        "phpcs": "vendor/bin/grumphp run --tasks=phpcs",
+        "phpmd": "vendor/bin/grumphp run --tasks=phpmd",
+        "phpstan": "vendor/bin/grumphp run --tasks=phpstan",
+        "phpunit": "vendor/bin/phpunit --configuration=phpunit.qa-php.xml",
+        "post-install-cmd": "vendor/bin/grumphp git:init"
+    },
+    "require-dev": {
+        "district09/qa-php": "9999999-dev"
+    },
+    "extra": {
+        "grumphp": {
+            "config-default-path": "vendor/district09/qa-php/configs/grumphp.yml"
+        }
+    }
+}

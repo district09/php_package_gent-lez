@@ -1,0 +1,16 @@
+# PHPUnit build artifacts.
+/build
+.phpunit.result.cache
+
+# Never commit vendors!
+/vendor
+
+# Exclude local confg files.
+/*.local.*
+/*.qa-php.*
+
+# Exclude the examples config file.
+/examples/config.php
+
+# Composer lock shoud not be included in a package.
+/composer.lock
