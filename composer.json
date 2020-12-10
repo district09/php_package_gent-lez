@@ -18,6 +18,10 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
     "autoload": {
         "psr-4": {
             "District09\\Gent\\Lez\\": "src/"
@@ -30,9 +34,10 @@
     },
     "require": {
         "php": "^7.3",
-        "proj4php/proj4php": "^2.0",
-        "digipolisgent/value": "^1.1|^2.0",
         "ext-json": "*",
+        "digipolisgent/api-client": "^1.1|^2.0",
+        "digipolisgent/value": "^1.1|^2.0",
+        "proj4php/proj4php": "^2.0",
         "webmozart/assert": "^1.9"
     },
     "scripts": {

@@ -11,7 +11,7 @@ use District09\Gent\Lez\Value\Geometry\Lambert72;
 /**
  * Get the LEZ zone(s) (features) for the given geographical coordinates.
  */
-class LezRequest extends AbstractJsonRequest
+final class LezRequest extends AbstractJsonRequest
 {
 
     /**

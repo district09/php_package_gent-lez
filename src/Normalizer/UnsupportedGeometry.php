@@ -9,7 +9,7 @@ use Exception;
 /**
  * Exception thrown when an unsupported geometry is detected.
  */
-class UnsupportedGeometry extends Exception
+final class UnsupportedGeometry extends Exception
 {
 
     /**

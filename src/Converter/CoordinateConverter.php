@@ -14,7 +14,7 @@ use proj4php\Proj4php;
 /**
  * Converter to translate Coordinates between different projections.
  */
-class CoordinateConverter
+final class CoordinateConverter
 {
 
     /**
