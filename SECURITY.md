@@ -19,14 +19,14 @@ confirmed, we will work on a solution following these steps:
 * Write a security announcement for this repository about the vulnerability.
   This will be posted as a wiki page and referenced from this file.
   It will contain at least the following:
-    * A title that always include the "Security release" string.
-    * A description of the vulnerability.
-    * The affected versions.
-    * The possible exploits.
-    * How to patch/upgrade/workaround affected applications.
-    * The CVE identifier.
-    * Credits.
-* Send the patch and the announcement to the reporter for review.
+  * A title that always include the "Security release" string.
+  * A description of the vulnerability.
+  * The affected versions.
+  * The possible exploits.
+  * How to patch/upgrade/workaround affected applications.
+  * The CVE identifier.
+  * Credits.
+* Send the patch, and the announcement to the reporter for review.
 * Apply the patch to this project and release a new version.
 * Publish the wiki page on this repository.
 * Update the security advisory list (see below).
@@ -37,7 +37,7 @@ confirmed, we will work on a solution following these steps:
 > While we are working on a patch, please do not reveal the issue publicly.
 >
 > The resolution takes anywhere between a couple of days to a month depending
-> on its complexity and the coordination with the downstream projects (see next
+> on its complexity, and the coordination with the downstream projects (see next
 > paragraph).
 
 ## Security Advisories

@@ -13,7 +13,7 @@ use District09\Gent\Lez\Value\FeaturesInterface;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
 use District09\Gent\Lez\Value\Geometry\Polygon;
 use District09\Gent\Lez\Value\Properties;
-use PHPStan\Testing\TestCase;
+use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
 /**

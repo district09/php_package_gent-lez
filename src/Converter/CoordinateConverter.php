@@ -22,14 +22,14 @@ final class CoordinateConverter
      *
      * @var \proj4php\Proj4php
      */
-    private $converter;
+    private $transformer;
 
     /**
      * Create a new converter.
      */
     public function __construct()
     {
-        $this->converter = new Proj4php();
+        $this->transformer = new Proj4php();
     }
 
     /**
@@ -51,17 +51,9 @@ final class CoordinateConverter
      */
     public function toLambert72(CoordinateInterface $coordinate): Lambert72
     {
-        if ($coordinate instanceof Lambert72) {
-            return $coordinate;
-        }
-
-        $values = $this
-            ->transformTo(
-                $coordinate,
-                $this->mapping[Lambert72::class]
-            );
-
-        return Lambert72::fromXYPosition($values['x'], $values['y']);
+        /** @var \District09\Gent\Lez\Value\Geometry\Lambert72 $lambert72 */
+        $lambert72 = $this->convertTo($coordinate, Lambert72::class);
+        return $lambert72;
     }
 
     /**
@@ -73,65 +65,56 @@ final class CoordinateConverter
      */
     public function toWgs84(CoordinateInterface $coordinate): Wgs84
     {
-        if ($coordinate instanceof Wgs84) {
-            return $coordinate;
-        }
-
-        $values = $this
-            ->transformTo(
-                $coordinate,
-                $this->mapping[Wgs84::class]
-            );
-
-        return Wgs84::fromLatitudeLongitude($values['y'], $values['x']);
+        /** @var \District09\Gent\Lez\Value\Geometry\Wgs84 $wgs84 */
+        $wgs84 = $this->convertTo($coordinate, Wgs84::class);
+        return $wgs84;
     }
 
     /**
-     * Convert a given coordinate into the requested format.
+     * Convert a given coordinate into the requested projection.
      *
      * @param \District09\Gent\Lez\Value\Geometry\CoordinateInterface $coordinate
      *   The coordinate value to transform.
-     * @param string $projection
-     *   The projection type to transform to.
+     * @param string $target
+     *   The class name of the target format.
      *
-     * @return array
-     *   The x, y values in the requested projection.
+     * @return \District09\Gent\Lez\Value\Geometry\CoordinateInterface
+     *   The transformed projection.
      */
-    private function transformTo(CoordinateInterface $coordinate, string $projection): array
+    private function convertTo(CoordinateInterface $coordinate, string $target): CoordinateInterface
     {
-        $projectionFrom = $this->projectionFromCoordinate($coordinate);
-        $projectionTo = new Proj($projection, $this->converter);
+        if ($coordinate instanceof $target) {
+            return $coordinate;
+        }
 
-        $pointFrom = new Point(
-            $coordinate->xPosition(),
-            $coordinate->yPosition(),
-            $projectionFrom
-        );
+        $projectionTo = new Proj($this->mapping[$target], $this->transformer);
+        $pointFrom = $this->pointFromCoordinate($coordinate);
 
         /** @var \proj4php\Point $point */
         $point = $this
-            ->converter
+            ->transformer
             ->transform($projectionTo, $pointFrom);
-
         $values = $point->toArray();
 
-        return [
-            'x' => $values[0],
-            'y' => $values[1],
-        ];
+        return new $target($values[0], $values[1]);
     }
 
     /**
-     * Get a projection based on the given coordinates.
+     * Get the Point based on the given coordinate.
      *
      * @param \District09\Gent\Lez\Value\Geometry\CoordinateInterface $coordinate
      *
-     * @return \proj4php\Proj
+     * @return \proj4php\Point
      */
-    private function projectionFromCoordinate(CoordinateInterface $coordinate): Proj
+    private function pointFromCoordinate(CoordinateInterface $coordinate): Point
     {
         $type = $this->mapping[get_class($coordinate)];
+        $projection = new Proj($type, $this->transformer);
 
-        return new Proj($type, $this->converter);
+        return new Point(
+            $coordinate->xPosition(),
+            $coordinate->yPosition(),
+            $projection
+        );
     }
 }

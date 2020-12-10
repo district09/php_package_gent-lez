@@ -8,7 +8,7 @@ use District09\Gent\Lez\Converter\CoordinateConverter;
 use District09\Gent\Lez\Value\Geometry\CoordinateInterface;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
 use District09\Gent\Lez\Value\Geometry\Wgs84;
-use PHPStan\Testing\TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \District09\Gent\Lez\Converter\CoordinateConverter
@@ -34,7 +34,7 @@ class CoordinateConverterTest extends TestCase
     ): void {
         $converter = new CoordinateConverter();
 
-        self::assertEquals(
+        self::assertSameCoordinates(
             $expected,
             $converter->toLambert72($coordinate)
         );
@@ -50,8 +50,8 @@ class CoordinateConverterTest extends TestCase
      */
     public function toLambert72Provider(): array
     {
-        $wgs84 = Wgs84::fromLatitudeLongitude(51.03758127798061, 3.735658261502679);
-        $lambert72 = Lambert72::fromXYPosition(105595.27868181054, 192122.78018975444);
+        $wgs84 = Wgs84::fromLatitudeLongitude(51.05, 3.75);
+        $lambert72 = Lambert72::fromXYPosition(106612.67029989629, 193495.81285804976);
 
         return [
             'No conversion when point is already Lambert72' => [
@@ -83,7 +83,7 @@ class CoordinateConverterTest extends TestCase
     ): void {
         $converter = new CoordinateConverter();
 
-        self::assertEquals(
+        self::assertSameCoordinates(
             $expected,
             $converter->toWgs84($coordinate)
         );
@@ -102,8 +102,8 @@ class CoordinateConverterTest extends TestCase
      */
     public function toWgs84Provider(): array
     {
-        $wgs84 = Wgs84::fromLatitudeLongitude(51.03758127958531, 3.735658242686581);
-        $lambert72 = Lambert72::fromXYPosition(105595.27868181054, 192122.78018975444);
+        $lambert72 = Lambert72::fromXYPosition(105595.28, 192122.78);
+        $wgs84 = Wgs84::fromLatitudeLongitude(51.03758127798061, 3.735658261502679);
 
         return [
             'No conversion when point is already Wgs84' => [
@@ -115,5 +115,37 @@ class CoordinateConverterTest extends TestCase
                 $wgs84
             ],
         ];
+    }
+
+    /**
+     * Check if transformed coordinates are the same until 6 digits.
+     *
+     * The floating number rounding can be different depending of the server
+     * configuration.
+     *
+     * @see https://www.php.net/manual/en/language.types.float.php
+     *
+     * @param \District09\Gent\Lez\Value\Geometry\CoordinateInterface $expected
+     *   The expected coordinate.
+     * @param \District09\Gent\Lez\Value\Geometry\CoordinateInterface $actual
+     *   The actual coordinate.
+     */
+    public static function assertSameCoordinates(CoordinateInterface $expected, CoordinateInterface $actual): void
+    {
+        $expectedX = round($expected->xPosition(), 6);
+        $expectedY = round($expected->yPosition(), 6);
+        $actualX = round($actual->xPosition(), 6);
+        $actualY = round($actual->yPosition(), 6);
+
+        self::assertSame(
+            $expectedX,
+            $actualX,
+            sprintf('X position is not the same, expected %s but got %s', $expectedX, $actualX)
+        );
+        self::assertSame(
+            $expectedY,
+            $actualY,
+            sprintf('Y position is not the same, expected %s but got %s', $expectedY, $actualY)
+        );
     }
 }

@@ -32,7 +32,7 @@ class AbstractCoordinate extends ValueAbstract implements CoordinateInterface
      * @param float $xPosition
      * @param float $yPosition
      */
-    protected function __construct(float $xPosition, float $yPosition)
+    public function __construct(float $xPosition, float $yPosition)
     {
         $this->xPosition = $xPosition;
         $this->yPosition = $yPosition;
