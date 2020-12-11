@@ -19,17 +19,25 @@ composer install
 
 ## Examples
 
-* `101-LookupLambert72.php` : Check if Lambert72 coordinates are located within
-  the LEZ zone.
-* `102-LookupWgs84.php` : Check if WGS84 coordinates are located within the LEZ
-  zone.
+* `DetailsFromLambert72.php` : Get the Gent LEZ details (if any) for a given
+  Lambert72  x y position.
+* `DetailsFromWgs84.php` : Get the Gent LEZ details (if any) for a given WGS84
+  latitude longitude.
+* `Lambert72InLez.php` : Check if given Lambert72 x y position is within the
+  Gent LEZ.
+* `Wgs84InLez.php` : Check if given WGS84 latitude longitude is within the Gent
+  LEZ.
 
 ## Usage
 
-The scripts can only be called from command line.
+The scripts can only be called from command line. Provide the X Y values for
+Lambert72, and Latitude Longitude for WGS84.
 
-Example:
+Examples:
 
 ```bash
-php 101-LookupLambert72.php
+php examples/DetailsFromLambert72.php 104681.5399999991 193912.3299999982
+php examples/DetailsFromWgs84.php 51.0535958 3.7224103
+php examples/Lambert72InLez.php 104681.5399999991 193912.3299999982
+php examples/Wgs84InLez.php 51.0535958 3.7224103
 ```
