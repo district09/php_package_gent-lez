@@ -48,8 +48,8 @@ information.
 [license-badge]: https://img.shields.io/github/license/digipolisgent/php_package_gent-lez?style=flat-square
 [license-link]: LICENSE.md
 
-[packagist-version-badge]: https://img.shields.io/packagist/v/digipolisgent/php_package_gent-lez?style=flat-square&include_prereleases
-[packagist-version-link]: https://packagist.org/packages/digipolisgent/php_package_gent-lez
+[packagist-version-badge]: https://img.shields.io/packagist/v/district09/gent-lez?style=flat-square&include_prereleases
+[packagist-version-link]: https://packagist.org/packages/district09/gent-lez
 
 [travis-badge]: https://img.shields.io/travis/com/digipolisgent/php_package_gent-lez/1.x.svg?label=1.x&logo=travis&style=flat-square
 [travis-link]: https://travis-ci.com/digipolisgent/php_package_gent-lez/branches
