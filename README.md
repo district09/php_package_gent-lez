@@ -7,8 +7,7 @@ Low Emission Zone (LEZ). This is a PHP wrapper around a GIS webservice.
 [![License][license-badge]][license-link]
 [![Packagist][packagist-version-badge]][packagist-version-link]
 
-[![Build Status Master][travis-master-badge]][travis-master-link]
-[![Build Status Develop][travis-develop-badge]][travis-develop-link]
+[![Build Status Master][travis-badge]][travis-link]
 [![Maintainability][codeclimate-maint-badge]][codeclimate-maint-link]
 [![Test Coverage][codeclimate-cover-badge]][codeclimate-cover-link]
 
@@ -52,10 +51,8 @@ information.
 [packagist-version-badge]: https://img.shields.io/packagist/v/digipolisgent/php_package_gent-lez?style=flat-square&include_prereleases
 [packagist-version-link]: https://packagist.org/packages/digipolisgent/php_package_gent-lez
 
-[travis-master-badge]: https://img.shields.io/travis/com/digipolisgent/php_package_gent-lez/master.svg?label=master&logo=travis&style=flat-square
-[travis-master-link]: https://travis-ci.com/digipolisgent/php_package_gent-lez/branches
-[travis-develop-badge]: https://img.shields.io/travis/com/digipolisgent/php_package_gent-lez/develop.svg?label=develop&logo=travis&style=flat-square
-[travis-develop-link]: https://travis-ci.com/digipolisgent/php_package_gent-lez/branches
+[travis-badge]: https://img.shields.io/travis/com/digipolisgent/php_package_gent-lez/1.x.svg?label=1.x&logo=travis&style=flat-square
+[travis-link]: https://travis-ci.com/digipolisgent/php_package_gent-lez/branches
 
 [codeclimate-maint-badge]: https://img.shields.io/codeclimate/maintainability/digipolisgent/php_package_gent-lez?logo=code-climate&style=flat-square
 [codeclimate-maint-link]: https://codeclimate.com/github/digipolisgent/php_package_gent-lez
