@@ -16,7 +16,6 @@ use District09\Gent\Lez\Value\Properties;
  */
 class FeatureNormalizerTest extends NormalizerTestBase
 {
-
     /**
      * Feature is extracted from given data.
      *

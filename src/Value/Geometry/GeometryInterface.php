@@ -12,5 +12,4 @@ use DigipolisGent\Value\ValueInterface;
  */
 interface GeometryInterface extends CollectionInterface
 {
-
 }

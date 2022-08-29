@@ -11,7 +11,6 @@ use District09\Gent\Lez\Value\Feature;
  */
 final class FeatureNormalizer
 {
-
     /**
      * Normalize the json data.
      *

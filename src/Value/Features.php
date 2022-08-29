@@ -12,7 +12,6 @@ use DigipolisGent\Value\ValueInterface;
  */
 class Features extends CollectionAbstract implements FeaturesInterface
 {
-
     /**
      * The resource.
      *

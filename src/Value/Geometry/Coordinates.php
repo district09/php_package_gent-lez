@@ -11,7 +11,6 @@ use DigipolisGent\Value\CollectionAbstract;
  */
 final class Coordinates extends CollectionAbstract
 {
-
     /**
      * Named constructors only.
      *

@@ -16,7 +16,6 @@ use PHPUnit\Framework\TestCase;
  */
 class FeaturesTest extends TestCase
 {
-
     /**
      * Features is created from resource and one or more feature items.
      *

@@ -12,7 +12,6 @@ use DigipolisGent\Value\ValueInterface;
  */
 final class Properties extends ValueAbstract
 {
-
     /**
      * The gent id.
      *

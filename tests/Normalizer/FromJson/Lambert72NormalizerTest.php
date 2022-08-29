@@ -12,7 +12,6 @@ use District09\Gent\Lez\Value\Geometry\Lambert72;
  */
 class Lambert72NormalizerTest extends NormalizerTestBase
 {
-
     /**
      * Lambert72 coordinate is extracted from given data.
      *

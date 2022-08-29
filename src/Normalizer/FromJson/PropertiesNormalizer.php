@@ -11,7 +11,6 @@ use District09\Gent\Lez\Value\Properties;
  */
 final class PropertiesNormalizer
 {
-
     /**
      * Normalize the json data.
      *
