@@ -8,7 +8,6 @@ use DigipolisGent\Value\CollectionInterface;
 
 interface FeaturesInterface extends CollectionInterface
 {
-
     /**
      * Get the features resource id.
      *

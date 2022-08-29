@@ -12,7 +12,6 @@ use District09\Gent\Lez\Value\Geometry\Polygon;
  */
 final class GeometryNormalizer
 {
-
     /**
      * Normalize the json data.
      *

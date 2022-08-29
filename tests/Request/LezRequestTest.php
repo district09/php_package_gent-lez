@@ -13,7 +13,6 @@ use PHPUnit\Framework\TestCase;
  */
 class LezRequestTest extends TestCase
 {
-
     /**
      * The URI is set based on the given coordinates.
      *

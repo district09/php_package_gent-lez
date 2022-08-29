@@ -13,7 +13,6 @@ use District09\Gent\Lez\Value\Geometry\Lambert72;
  */
 final class LezRequest extends AbstractJsonRequest
 {
-
     /**
      * Create a new request for the given coordinates.
      *

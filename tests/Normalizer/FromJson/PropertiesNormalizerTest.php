@@ -12,7 +12,6 @@ use District09\Gent\Lez\Value\Properties;
  */
 class PropertiesNormalizerTest extends NormalizerTestBase
 {
-
     /**
      * Properties is extracted from given data.
      *

@@ -15,7 +15,6 @@ use PHPUnit\Framework\TestCase;
  */
 class CoordinateConverterTest extends TestCase
 {
-
     /**
      * Coordinates can be converted to Lambert72.
      *

@@ -11,7 +11,6 @@ use District09\Gent\Lez\Value\Geometry\Coordinates;
  */
 final class CoordinatesNormalizer
 {
-
     /**
      * Normalize the json data.
      *

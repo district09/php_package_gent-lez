@@ -13,7 +13,6 @@ use District09\Gent\Lez\Value\Geometry\GeometryInterface;
  */
 class Feature extends ValueAbstract
 {
-
     /**
      * The properties.
      *

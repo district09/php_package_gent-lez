@@ -16,7 +16,6 @@ use proj4php\Proj4php;
  */
 final class CoordinateConverter
 {
-
     /**
      * The converter.
      *

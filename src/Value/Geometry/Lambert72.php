@@ -9,7 +9,6 @@ namespace District09\Gent\Lez\Value\Geometry;
  */
 final class Lambert72 extends AbstractCoordinate
 {
-
     /**
      * Create new Lambert 72 coordinate from its x and y position.
      *
