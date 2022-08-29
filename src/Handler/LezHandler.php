@@ -16,7 +16,6 @@ use Psr\Http\Message as Psr;
  */
 final class LezHandler implements HandlerInterface
 {
-
     /**
      * @inheritDoc
      */

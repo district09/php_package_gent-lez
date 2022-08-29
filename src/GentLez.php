@@ -14,7 +14,6 @@ use District09\Gent\Lez\Value\Geometry\CoordinateInterface;
  */
 final class GentLez extends ServiceAbstract implements GentLezInterface
 {
-
     /**
      * @inheritDoc
      */

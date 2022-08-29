@@ -15,7 +15,6 @@ use District09\Gent\Lez\Value\Geometry\Polygon;
  */
 class GeometryNormalizerTest extends NormalizerTestBase
 {
-
     /**
      * AN exception is thrown when the given geometry is not supported.
      *

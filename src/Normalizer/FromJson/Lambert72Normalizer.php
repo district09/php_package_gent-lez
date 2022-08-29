@@ -11,7 +11,6 @@ use District09\Gent\Lez\Value\Geometry\Lambert72;
  */
 final class Lambert72Normalizer
 {
-
     /**
      * Normalize the json data.
      *

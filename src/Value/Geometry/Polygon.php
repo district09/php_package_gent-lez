@@ -11,7 +11,6 @@ use DigipolisGent\Value\CollectionAbstract;
  */
 final class Polygon extends CollectionAbstract implements GeometryInterface
 {
-
     /**
      * Named constructors only.
      *

@@ -11,7 +11,6 @@ use Exception;
  */
 final class UnsupportedGeometry extends Exception
 {
-
     /**
      * Create exception from given unsupported type.
      *

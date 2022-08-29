@@ -12,7 +12,6 @@ use District09\Gent\Lez\Value\FeaturesInterface;
  */
 final class LezResponse implements ResponseInterface
 {
-
     /**
      * The Features collection.
      *

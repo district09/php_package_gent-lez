@@ -1,6 +1,8 @@
 {
     "name": "district09/gent-lez",
     "description": "Check if given coordinates are within the Gent LEZ (Low Emission Zone).",
+    "license": "MIT",
+    "type": "library",
     "keywords": [
         "district09",
         "services",
@@ -8,20 +10,26 @@
         "stad gent",
         "LEZ"
     ],
-    "type": "library",
-    "homepage": "https://github.com/digipolisgent/php_package_d09-gent-lez",
-    "license": "MIT",
     "authors": [
         {
             "name": "Peter Decuyper",
             "email": "peter.decuyper@district09.gent"
         }
     ],
+    "homepage": "https://github.com/district09/php_package_d09-gent-lez",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-json": "*",
+        "digipolisgent/api-client": "^3.0",
+        "digipolisgent/value": "^3.0",
+        "proj4php/proj4php": "^2.0",
+        "webmozart/assert": "^1.9"
+    },
+    "require-dev": {
+        "district09/qa-php": "^1.0.1"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "config": {
-        "sort-packages": true
-    },
     "autoload": {
         "psr-4": {
             "District09\\Gent\\Lez\\": "src/"
@@ -32,30 +40,26 @@
             "District09\\Tests\\Gent\\Lez\\": "tests/"
         }
     },
-    "require": {
-        "php": ">=7.3",
-        "ext-json": "*",
-        "digipolisgent/api-client": "^1.1|^2.0",
-        "digipolisgent/value": "^1.1|^2.0",
-        "proj4php/proj4php": "^2.0",
-        "webmozart/assert": "^1.9"
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp-shim": true,
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "grumphp": {
+            "config-default-path": "vendor/district09/qa-php/configs/grumphp.yml"
+        }
     },
     "scripts": {
+        "post-install-cmd": "vendor/bin/grumphp git:init",
         "coverage": "vendor/bin/phpunit --configuration=phpunit.qa-php.xml --coverage-html build/coverage",
         "grumphp": "vendor/bin/grumphp run",
         "phpcpd": "vendor/bin/grumphp run --tasks=phpcpd",
         "phpcs": "vendor/bin/grumphp run --tasks=phpcs",
         "phpmd": "vendor/bin/grumphp run --tasks=phpmd",
         "phpstan": "vendor/bin/grumphp run --tasks=phpstan",
-        "phpunit": "vendor/bin/phpunit --configuration=phpunit.qa-php.xml",
-        "post-install-cmd": "vendor/bin/grumphp git:init"
-    },
-    "require-dev": {
-        "district09/qa-php": "9999999-dev"
-    },
-    "extra": {
-        "grumphp": {
-            "config-default-path": "vendor/district09/qa-php/configs/grumphp.yml"
-        }
+        "phpunit": "vendor/bin/phpunit --configuration=phpunit.qa-php.xml"
     }
 }

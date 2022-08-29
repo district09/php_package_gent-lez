@@ -11,7 +11,6 @@ use DigipolisGent\API\Client\Configuration\Configuration as BaseConfiguration;
  */
 final class Configuration extends BaseConfiguration implements ConfigurationInterface
 {
-
     /**
      * The API user key.
      *
