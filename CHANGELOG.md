@@ -2,7 +2,7 @@
 
 All Notable changes to the `district09/gent-lez` package.
 
-## [Unrleased]
+## [Unreleased]
 
 ### Added
 
@@ -11,6 +11,11 @@ All Notable changes to the `district09/gent-lez` package.
 ### Changed
 
 - Change minimal PHP version to 7.4.
+
+### Updated
+
+- Update digipolisgent/api-client to 3.0.
+- Update digipolisgent/value 3.0.
 
 ## [1.0.0]
 

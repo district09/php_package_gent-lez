@@ -16,12 +16,12 @@
             "email": "peter.decuyper@district09.gent"
         }
     ],
-    "homepage": "https://github.com/digipolisgent/php_package_d09-gent-lez",
+    "homepage": "https://github.com/district09/php_package_d09-gent-lez",
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
-        "digipolisgent/api-client": "^2.0",
-        "digipolisgent/value": "^2.0",
+        "digipolisgent/api-client": "^3.0",
+        "digipolisgent/value": "^3.0",
         "proj4php/proj4php": "^2.0",
         "webmozart/assert": "^1.9"
     },
