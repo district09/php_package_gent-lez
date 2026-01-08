@@ -26,7 +26,7 @@
         "webmozart/assert": "^1.9"
     },
     "require-dev": {
-        "district09/qa-php": "^1.0.1"
+        "district09/qa-php": "^2.2"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -42,8 +42,9 @@
     },
     "config": {
         "allow-plugins": {
-            "phpro/grumphp-shim": true,
-            "ergebnis/composer-normalize": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "phpro/grumphp-shim": true
         },
         "sort-packages": true
     },
