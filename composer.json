@@ -26,7 +26,8 @@
         "webmozart/assert": "^1.9"
     },
     "require-dev": {
-        "district09/qa-php": "^2.2"
+        "district09/qa-php": "^2.2",
+        "rector/rector": "^2.3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

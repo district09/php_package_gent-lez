@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Client;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use DigipolisGent\API\Client\Handler\HandlerInterface;
 use DigipolisGent\API\Client\Response\ResponseInterface;
 use District09\Gent\Lez\Client\Client;
@@ -16,17 +18,17 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface as PsrResponse;
 
 /**
- * @covers District09\Gent\Lez\Client\Client
+ * Tests District09\Gent\Lez\Client\Client.
  */
-class ClientTest extends TestCase
+#[CoversClass(Client::class)]
+final class ClientTest extends TestCase
 {
     use ProphecyTrait;
 
     /**
      * No API user key is added to the header if no value within configuration.
-     *
-     * @test
      */
+    #[Test]
     public function noApiUserKeyAddedIfNoValueInConfiguration(): void
     {
         $configuration = $this->prophesize(ConfigurationInterface::class);
@@ -67,9 +69,8 @@ class ClientTest extends TestCase
 
     /**
      * API Key is send as header.
-     *
-     * @test
      */
+    #[Test]
     public function apiUserKeyIsSendAsHeader()
     {
         $configuration = $this->prophesize(ConfigurationInterface::class);

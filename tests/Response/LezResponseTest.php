@@ -4,23 +4,25 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Response;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Response\LezResponse;
 use District09\Gent\Lez\Value\FeaturesInterface;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
- * @covers \District09\Gent\Lez\Response\LezResponse
+ * Tests District09\Gent\Lez\Response\LezResponse.
  */
-class LezResponseTest extends TestCase
+#[CoversClass(LezResponse::class)]
+final class LezResponseTest extends TestCase
 {
     use ProphecyTrait;
 
     /**
      * Response can be created from Features collection.
-     *
-     * @test
      */
+    #[Test]
     public function itCanBeCreatedFromFeaturesCollection(): void
     {
         $features = $this->prophesize(FeaturesInterface::class)->reveal();

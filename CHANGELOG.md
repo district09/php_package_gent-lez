@@ -4,9 +4,14 @@ All Notable changes to the `district09/gent-lez` package.
 
 ## [Unreleased]
 
-### Updated
+### Changed
 
 - Change minimal PHP version to 8.3.
+
+### Updated
+
+- Update district09/qa-php to 2.x.
+- Update PHPUnit to 12.x.
 
 ## [2.0.0]
 

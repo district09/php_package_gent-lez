@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Configuration;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Configuration\Configuration;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Configuration\Configuration
+ * Tests District09\Gent\Lez\Configuration\Configuration.
  */
-class ConfigurationTest extends TestCase
+#[CoversClass(Configuration::class)]
+final class ConfigurationTest extends TestCase
 {
     /**
      * Configuration can be created with user key.
-     *
-     * @test
      */
+    #[Test]
     public function configurationCanBeCreatedFromDetails(): void
     {
         $configuration = new Configuration('https://endpoint', 'api-user-key');
