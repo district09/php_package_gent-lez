@@ -18,7 +18,7 @@
     ],
     "homepage": "https://github.com/district09/php_package_d09-gent-lez",
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.3",
         "ext-json": "*",
         "digipolisgent/api-client": "^3.0",
         "digipolisgent/value": "^3.0",

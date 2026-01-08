@@ -2,6 +2,12 @@
 
 All Notable changes to the `district09/gent-lez` package.
 
+## [Unreleased]
+
+### Updated
+
+- Change minimal PHP version to 8.3.
+
 ## [2.0.0]
 
 ### Added
