@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Request;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Request\LezRequest;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Request\LezRequest
+ * Tests District09\Gent\Lez\Request\LezRequest.
  */
-class LezRequestTest extends TestCase
+#[CoversClass(LezRequest::class)]
+final class LezRequestTest extends TestCase
 {
     /**
      * The URI is set based on the given coordinates.
-     *
-     * @test
      */
+    #[Test]
     public function itCreatesUriBasedOnCoordinates(): void
     {
         $coordinates = Lambert72::fromXYPosition(100, 1000);
@@ -25,7 +27,7 @@ class LezRequestTest extends TestCase
         $request = new LezRequest($coordinates);
 
         self::assertEquals(
-            'pbuffer?wkid=31370&pointx=100&pointy=1000&bufferdistance=1',
+            'pointbuffer?wkid=31370&pointx=100&pointy=1000&bufferdistance=1',
             $request->getRequestTarget()
         );
     }

@@ -6,23 +6,26 @@ namespace District09\Tests\Gent\Lez\Normalizer\FromJson;
 
 use District09\Gent\Lez\Normalizer\FromJson\GeometryNormalizer;
 use District09\Gent\Lez\Normalizer\UnsupportedGeometry;
-use District09\Gent\Lez\Value\Geometry\Coordinates;
-use District09\Gent\Lez\Value\Geometry\Lambert72;
-use District09\Gent\Lez\Value\Geometry\Polygon;
+use District09\Tests\Gent\Lez\fixtures\WithFeatureCollectionTrait;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Normalizer\FromJson\GeometryNormalizer
+ * Tests District09\Gent\Lez\Normalizer\FromJson\GeometryNormalizer.
  */
-class GeometryNormalizerTest extends NormalizerTestBase
+#[CoversClass(GeometryNormalizer::class)]
+final class GeometryNormalizerTest extends TestCase
 {
+    use WithFeatureCollectionTrait;
+
     /**
      * AN exception is thrown when the given geometry is not supported.
-     *
-     * @test
      */
+    #[Test]
     public function itThrowsExceptionWhenGeometryTypeIsNotSupported(): void
     {
-        $json = (object)['type' => 'foobar'];
+        $json = 'POINT (105480.21567926178 192222.4694100318)';
         $normalizer = new GeometryNormalizer();
 
         $this->expectException(UnsupportedGeometry::class);
@@ -31,31 +34,16 @@ class GeometryNormalizerTest extends NormalizerTestBase
 
     /**
      * Polygon geometry is extracted from given data.
-     *
-     * @test
      */
+    #[Test]
     public function itExtractsPolygonFromJsonData(): void
     {
-        $json = $this->getDecodedFeatureCollection();
-
-        $expected = Polygon::fromCoordinates(
-            Coordinates::fromLambert72(
-                Lambert72::fromXYPosition(105204.34799999744, 195474.46200000122),
-                Lambert72::fromXYPosition(105178.27799999714, 195475.5300000012),
-                Lambert72::fromXYPosition(105204.34799999744, 195474.46200000122)
-            ),
-            Coordinates::fromLambert72(
-                Lambert72::fromXYPosition(0, 0),
-                Lambert72::fromXYPosition(100, 100),
-                Lambert72::fromXYPosition(0, 0)
-            )
-        );
+        $json = $this->getDecodedJson();
 
         $normalizer = new GeometryNormalizer();
-
         self::assertEquals(
-            $expected,
-            $normalizer->normalize($json->features[0]->geometry)
+            $this->getFeatureCollection()->features()[0]->geometry(),
+            $normalizer->normalize($json[0]->items[0]->Shape)
         );
     }
 }

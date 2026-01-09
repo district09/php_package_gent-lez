@@ -7,9 +7,13 @@ Low Emission Zone (LEZ). This is a PHP wrapper around a GIS webservice.
 [![License][license-badge]][license-link]
 [![Packagist][packagist-version-badge]][packagist-version-link]
 
-[![Build Status Master][travis-badge]][travis-link]
-[![Maintainability][codeclimate-maint-badge]][codeclimate-maint-link]
-[![Test Coverage][codeclimate-cover-badge]][codeclimate-cover-link]
+[![CI test main][github-ci-badge-main]][github-ci-link]
+[![CI test develop][github-ci-badge-develop]][github-ci-link]
+
+## Supported NucleusSpatial versions
+
+- The current version (3+) of this package is compatible with NucleusSpatial v2.
+- Use version 2.x of this package for NucleusSpatial v1.
 
 ## Install
 
@@ -51,10 +55,6 @@ information.
 [packagist-version-badge]: https://img.shields.io/packagist/v/district09/gent-lez?style=flat-square
 [packagist-version-link]: https://packagist.org/packages/district09/gent-lez
 
-[travis-badge]: https://img.shields.io/travis/com/digipolisgent/php_package_gent-lez/1.x.svg?label=1.x&logo=travis&style=flat-square
-[travis-link]: https://travis-ci.com/digipolisgent/php_package_gent-lez/branches
-
-[codeclimate-maint-badge]: https://img.shields.io/codeclimate/maintainability/digipolisgent/php_package_gent-lez?logo=code-climate&style=flat-square
-[codeclimate-maint-link]: https://codeclimate.com/github/digipolisgent/php_package_gent-lez
-[codeclimate-cover-badge]: https://img.shields.io/codeclimate/coverage/digipolisgent/php_package_gent-lez?logo=code-climate&style=flat-square
-[codeclimate-cover-link]: https://codeclimate.com/github/digipolisgent/php_package_gent-lez
+[github-ci-link]: https://github.com/district09/php_package_gent-lez/actions/workflows/ci.yml
+[github-ci-badge-main]: https://img.shields.io/github/actions/workflow/status/district09/php_package_gent-lez/ci.yml?branch=main&style=flat-square&label=Tests%20Main
+[github-ci-badge-develop]: https://img.shields.io/github/actions/workflow/status/district09/php_package_gent-lez/ci.yml?branch=develop&style=flat-square&label=Tests%20Develop

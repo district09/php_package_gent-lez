@@ -5,18 +5,20 @@ declare(strict_types=1);
 namespace District09\Tests\Gent\Lez\Normalizer;
 
 use District09\Gent\Lez\Normalizer\UnsupportedGeometry;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Normalizer\UnsupportedGeometry
+ * Tests District09\Gent\Lez\Normalizer\UnsupportedGeometry.
  */
-class UnsupportedGeometryTest extends TestCase
+#[CoversClass(UnsupportedGeometry::class)]
+final class UnsupportedGeometryTest extends TestCase
 {
     /**
      * Exception can be created from the unsupported type.
-     *
-     * @test
      */
+    #[Test]
     public function itIsCreatedByUnsupportedType(): void
     {
         $exception = UnsupportedGeometry::type('FooBar');

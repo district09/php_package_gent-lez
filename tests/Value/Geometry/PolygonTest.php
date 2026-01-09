@@ -4,21 +4,23 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Value\Geometry;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Value\Geometry\Coordinates;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
 use District09\Gent\Lez\Value\Geometry\Polygon;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Value\Geometry\Polygon
+ * Tests District09\Gent\Lez\Value\Geometry\Polygon.
  */
-class PolygonTest extends TestCase
+#[CoversClass(Polygon::class)]
+final class PolygonTest extends TestCase
 {
     /**
      * Polygon is created from its coordinates.
-     *
-     * @test
      */
+    #[Test]
     public function itIsCreatedFromCoordinates(): void
     {
         $polygon = Polygon::fromCoordinates(
@@ -37,9 +39,8 @@ class PolygonTest extends TestCase
 
     /**
      * The coordinates are used to get the string representation.
-     *
-     * @test
      */
+    #[Test]
     public function itUsesCoordinatesStringsAsString(): void
     {
         $polygon = Polygon::fromCoordinates(

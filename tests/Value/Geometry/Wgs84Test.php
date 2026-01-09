@@ -4,14 +4,18 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Value\Geometry;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Value\Geometry\Wgs84;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Value\Geometry\Wgs84
+ * Tests District09\Gent\Lez\Value\Geometry\Wgs84.
  */
-class Wgs84Test extends TestCase
+#[CoversClass(Wgs84::class)]
+final class Wgs84Test extends TestCase
 {
     /**
      * Point can be created from x and y position.
@@ -20,10 +24,10 @@ class Wgs84Test extends TestCase
      * @param float $longitude
      * @param bool $expectException
      *
-     * @dataProvider coordinatesProvider
      *
-     * @test
      */
+    #[DataProvider('coordinatesProvider')]
+    #[Test]
     public function itCanBeCreatedFromXAndYPosition(
         float $latitude,
         float $longitude,
@@ -48,7 +52,7 @@ class Wgs84Test extends TestCase
      *   - float : y-position value.
      *   - bool : the given values should trigger an exception.
      */
-    public function coordinatesProvider(): array
+    public static function coordinatesProvider(): array
     {
         return [
             'Exception when Latitude is less than -90' => [
@@ -88,9 +92,8 @@ class Wgs84Test extends TestCase
      * String has proper properties order.
      *
      * The order should be [latitude (y)] [longitude (x)].
-     *
-     * @test
      */
+    #[Test]
     public function itCastToStringAsLatitudeLongitudeSeparatedByComma(): void
     {
         $coordinate = Wgs84::fromLatitudeLongitude(12.201, 11.101);

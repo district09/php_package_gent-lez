@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Request;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use District09\Gent\Lez\Request\AbstractJsonRequest;
+use PHPUnit\Framework\Attributes\Test;
 use DigipolisGent\API\Client\Request\AcceptType;
 use DigipolisGent\API\Client\Request\MethodType;
 use District09\Gent\Lez\Request\LezRequest;
@@ -11,15 +14,15 @@ use District09\Gent\Lez\Value\Geometry\Lambert72;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Request\AbstractJsonRequest
+ * Tests District09\Gent\Lez\Request\AbstractJsonRequest.
  */
-class AbstractJsonRequestTest extends TestCase
+#[CoversClass(AbstractJsonRequest::class)]
+final class AbstractJsonRequestTest extends TestCase
 {
     /**
      * The method and accept header are set.
-     *
-     * @test
      */
+    #[Test]
     public function itSetsMethodAndAcceptHeader(): void
     {
         $coordinates = Lambert72::fromXYPosition(100, 1000);

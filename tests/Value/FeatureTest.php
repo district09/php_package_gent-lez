@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Value;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\DataProvider;
 use District09\Gent\Lez\Value\Feature;
 use District09\Gent\Lez\Value\Geometry\Coordinates;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
@@ -12,15 +15,15 @@ use District09\Gent\Lez\Value\Properties;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Value\Feature
+ * Tests District09\Gent\Lez\Value\Feature.
  */
-class FeatureTest extends TestCase
+#[CoversClass(Feature::class)]
+final class FeatureTest extends TestCase
 {
     /**
      * Feature is created from properties and geometry.
-     *
-     * @test
      */
+    #[Test]
     public function itIsCreatedFromItsDetails(): void
     {
         $properties = Properties::fromGentAndUriId('Foo', 'gent/foo');
@@ -40,10 +43,10 @@ class FeatureTest extends TestCase
      * @param bool $same
      *   Both features should be the same.
      *
-     * @dataProvider otherFeatureProvider
      *
-     * @test
      */
+    #[DataProvider('otherFeatureProvider')]
+    #[Test]
     public function itIsSamePropertiesWhenTheyShareSameValues(
         Feature $otherFeature,
         bool $same
@@ -68,7 +71,7 @@ class FeatureTest extends TestCase
      *   - The other properties to compare against.
      *   - Should be the same.
      */
-    public function otherFeatureProvider(): array
+    public static function otherFeatureProvider(): array
     {
         $sameProperties = Properties::fromGentAndUriId('Foo', 'gent/foo');
         $otherProperties = Properties::fromGentAndUriId('Fizz', 'gent/fizz');
@@ -110,9 +113,8 @@ class FeatureTest extends TestCase
 
     /**
      * The string value is the properties casted to string.
-     *
-     * @test
      */
+    #[Test]
     public function itCanBeCastedToString(): void
     {
         $feature = Feature::fromPropertiesAndGeometry(

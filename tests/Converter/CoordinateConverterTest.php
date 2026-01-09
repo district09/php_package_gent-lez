@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Converter;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Converter\CoordinateConverter;
 use District09\Gent\Lez\Value\Geometry\CoordinateInterface;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
@@ -11,9 +14,10 @@ use District09\Gent\Lez\Value\Geometry\Wgs84;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Converter\CoordinateConverter
+ * Tests District09\Gent\Lez\Converter\CoordinateConverter.
  */
-class CoordinateConverterTest extends TestCase
+#[CoversClass(CoordinateConverter::class)]
+final class CoordinateConverterTest extends TestCase
 {
     /**
      * Coordinates can be converted to Lambert72.
@@ -23,10 +27,10 @@ class CoordinateConverterTest extends TestCase
      * @param \District09\Gent\Lez\Value\Geometry\Lambert72 $expected
      *   The expected transformed coordinate.
      *
-     * @dataProvider toLambert72Provider
      *
-     * @test
      */
+    #[DataProvider('toLambert72Provider')]
+    #[Test]
     public function itConvertsToLambert72(
         CoordinateInterface $coordinate,
         Lambert72 $expected
@@ -47,7 +51,7 @@ class CoordinateConverterTest extends TestCase
      *   - The coordinate to convert.
      *   - The expected converted coordinate.
      */
-    public function toLambert72Provider(): array
+    public static function toLambert72Provider(): array
     {
         $wgs84 = Wgs84::fromLatitudeLongitude(51.05, 3.75);
         $lambert72 = Lambert72::fromXYPosition(106612.67029989629, 193495.81285804976);
@@ -72,10 +76,10 @@ class CoordinateConverterTest extends TestCase
      * @param \District09\Gent\Lez\Value\Geometry\Wgs84 $expected
      *   The expected transformed coordinate.
      *
-     * @dataProvider toWgs84Provider
      *
-     * @test
      */
+    #[DataProvider('toWgs84Provider')]
+    #[Test]
     public function itConvertsToWgs84(
         CoordinateInterface $coordinate,
         Wgs84 $expected
@@ -99,7 +103,7 @@ class CoordinateConverterTest extends TestCase
      *   - The coordinate to convert.
      *   - The expected converted coordinate.
      */
-    public function toWgs84Provider(): array
+    public static function toWgs84Provider(): array
     {
         $lambert72 = Lambert72::fromXYPosition(105595.28, 192122.78);
         $wgs84 = Wgs84::fromLatitudeLongitude(51.03758127798061, 3.735658261502679);

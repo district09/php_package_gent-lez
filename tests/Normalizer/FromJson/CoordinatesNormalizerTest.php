@@ -7,21 +7,22 @@ namespace District09\Tests\Gent\Lez\Normalizer\FromJson;
 use District09\Gent\Lez\Normalizer\FromJson\CoordinatesNormalizer;
 use District09\Gent\Lez\Value\Geometry\Coordinates;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Normalizer\FromJson\CoordinatesNormalizer
+ * Tests District09\Gent\Lez\Normalizer\FromJson\CoordinatesNormalizer.
  */
-class CoordinatesNormalizerTest extends NormalizerTestBase
+#[CoversClass(CoordinatesNormalizer::class)]
+final class CoordinatesNormalizerTest extends TestCase
 {
     /**
      * Coordinates are extracted from given data.
-     *
-     * @test
      */
+    #[Test]
     public function itExtractsCoordinatesFromJsonData(): void
     {
-        $json = $this->getDecodedFeatureCollection();
-
         $expected = Coordinates::fromLambert72(
             Lambert72::fromXYPosition(105204.34799999744, 195474.46200000122),
             Lambert72::fromXYPosition(105178.27799999714, 195475.5300000012),
@@ -29,10 +30,13 @@ class CoordinatesNormalizerTest extends NormalizerTestBase
         );
 
         $normalizer = new CoordinatesNormalizer();
-
         self::assertEquals(
             $expected,
-            $normalizer->normalize($json->features[0]->geometry->coordinates[0])
+            $normalizer->normalize([
+                [105204.34799999744, 195474.46200000122],
+                [105178.27799999714, 195475.5300000012],
+                [105204.34799999744, 195474.46200000122],
+            ])
         );
     }
 }

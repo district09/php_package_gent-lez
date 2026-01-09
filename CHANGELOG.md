@@ -2,6 +2,25 @@
 
 All Notable changes to the `district09/gent-lez` package.
 
+## [3.0.0]
+
+### Added
+
+- VG-2746: Add support for NucleusSpatial V2 API.
+
+### Changed
+
+- Change minimal PHP version to 8.3.
+
+### Removed
+
+- VG-2746: Removed support for NucleusSpatial V1 API.
+
+### Updated
+
+- Update district09/qa-php to 2.x.
+- Update PHPUnit to 12.x.
+
 ## [2.0.0]
 
 ### Added
@@ -28,6 +47,7 @@ Initial release of the service wrapper.
 - Added service method to check if a given Lambert72 or WGS84 coordinate is
   within the Gent Lez.
 
+[3.0.0]: https://github.com/district09/php_package_gent-lez/compare/2.0.0...3.0.0
 [2.0.0]: https://github.com/district09/php_package_gent-lez/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/district09/php_package_gent-lez/releases/tag/1.0.0
 [Unreleased]: https://github.com/district09/php_package_gent-lez/compare/main...develop
