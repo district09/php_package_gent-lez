@@ -4,9 +4,17 @@ All Notable changes to the `district09/gent-lez` package.
 
 ## [Unreleased]
 
+### Added
+
+- VG-2746: Add support for NucleusSpatial V2 API.
+
 ### Changed
 
 - Change minimal PHP version to 8.3.
+
+### Removed
+
+- VG-2746: Removed support for NucleusSpatial V1 API.
 
 ### Updated
 
