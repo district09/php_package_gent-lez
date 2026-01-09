@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Value\Geometry;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Value\Geometry\Coordinates;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Value\Geometry\Coordinates
+ * Tests District09\Gent\Lez\Value\Geometry\Coordinates.
  */
-class CoordinatesTest extends TestCase
+#[CoversClass(Coordinates::class)]
+final class CoordinatesTest extends TestCase
 {
     /**
      * Coordinates collection is created from one or more Lambert72 coordinates.
-     *
-     * @test
      */
+    #[Test]
     public function itCanBeCreatedFromOneOrMoreLambert72Points(): void
     {
         $collection = Coordinates::fromLambert72(
@@ -31,9 +33,8 @@ class CoordinatesTest extends TestCase
 
     /**
      * Cast to string results in points separated by ";".
-     *
-     * @test
      */
+    #[Test]
     public function itCanBeCastedToString(): void
     {
         $collection = Coordinates::fromLambert72(

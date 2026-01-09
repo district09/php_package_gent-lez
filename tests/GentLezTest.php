@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use DigipolisGent\API\Client\ClientInterface;
 use District09\Gent\Lez\GentLez;
 use District09\Gent\Lez\Request\LezRequest;
@@ -17,9 +19,10 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
- * @covers \District09\Gent\Lez\GentLez
+ * Tests District09\Gent\Lez\GentLez.
  */
-class GentLezTest extends TestCase
+#[CoversClass(GentLez::class)]
+final class GentLezTest extends TestCase
 {
     use ProphecyTrait;
 
@@ -85,9 +88,8 @@ class GentLezTest extends TestCase
 
     /**
      * Geographical LEZ feature is returned or NULL.
-     *
-     * @test
      */
+    #[Test]
     public function itReturnsLezFeatureOrNull(): void
     {
         $gentLez = new GentLez($this->client);
@@ -103,9 +105,8 @@ class GentLezTest extends TestCase
 
     /**
      * True is returned when coordinate is within LEZ.
-     *
-     * @test
      */
+    #[Test]
     public function itReturnsIfCoordinateIsWithinLez(): void
     {
         $gentLez = new GentLez($this->client);

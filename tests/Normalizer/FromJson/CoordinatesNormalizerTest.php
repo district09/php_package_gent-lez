@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Normalizer\FromJson;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Normalizer\FromJson\CoordinatesNormalizer;
 use District09\Gent\Lez\Value\Geometry\Coordinates;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
 
 /**
- * @covers \District09\Gent\Lez\Normalizer\FromJson\CoordinatesNormalizer
+ * Tests District09\Gent\Lez\Normalizer\FromJson\CoordinatesNormalizer.
  */
-class CoordinatesNormalizerTest extends NormalizerTestBase
+#[CoversClass(CoordinatesNormalizer::class)]
+final class CoordinatesNormalizerTest extends NormalizerTestBase
 {
     /**
      * Coordinates are extracted from given data.
-     *
-     * @test
      */
+    #[Test]
     public function itExtractsCoordinatesFromJsonData(): void
     {
         $json = $this->getDecodedFeatureCollection();

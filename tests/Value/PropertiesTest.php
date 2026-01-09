@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Value;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\DataProvider;
 use District09\Gent\Lez\Value\Properties;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Value\Properties
+ * Tests District09\Gent\Lez\Value\Properties.
  */
-class PropertiesTest extends TestCase
+#[CoversClass(Properties::class)]
+final class PropertiesTest extends TestCase
 {
     /**
      * Properties are created from Gent & UID ID.
-     *
-     * @test
      */
+    #[Test]
     public function itIsCreatedFromItsDetails(): void
     {
         $properties = Properties::fromGentAndUriId('Foo', 'gent/foo');
@@ -33,10 +36,10 @@ class PropertiesTest extends TestCase
      * @param bool $same
      *   Both properties should be the same.
      *
-     * @dataProvider otherPropertiesProvider
      *
-     * @test
      */
+    #[DataProvider('otherPropertiesProvider')]
+    #[Test]
     public function itIsSamePropertiesWhenTheyShareSameValues(
         Properties $otherProperties,
         bool $same
@@ -54,7 +57,7 @@ class PropertiesTest extends TestCase
      *   - The other properties to compare against.
      *   - Should be the same.
      */
-    public function otherPropertiesProvider(): array
+    public static function otherPropertiesProvider(): array
     {
         return [
             'Not the same when the Gent ID is different' => [
@@ -74,9 +77,8 @@ class PropertiesTest extends TestCase
 
     /**
      * The value is casted to string as "gent_id (uid_id)".
-     *
-     * @test
      */
+    #[Test]
     public function itCanBeCastedToString(): void
     {
         $properties = Properties::fromGentAndUriId('Foo', 'gent/foo');

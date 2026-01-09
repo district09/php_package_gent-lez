@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Handler;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Handler\LezHandler;
 use District09\Gent\Lez\Request\LezRequest;
 use District09\Gent\Lez\Response\LezResponse;
@@ -14,17 +16,17 @@ use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @covers \District09\Gent\Lez\Handler\LezHandler
+ * Tests District09\Gent\Lez\Handler\LezHandler.
  */
-class LezhandlerTest extends TestCase
+#[CoversClass(LezHandler::class)]
+final class LezhandlerTest extends TestCase
 {
     use ProphecyTrait;
 
     /**
      * Handles only LezRequests.
-     *
-     * @test
      */
+    #[Test]
     public function itHandlesOnlyLezRequests(): void
     {
         $handler = new LezHandler();
@@ -37,9 +39,8 @@ class LezhandlerTest extends TestCase
 
     /**
      * The response data is converted into a LezResponse.
-     *
-     * @test
      */
+    #[Test]
     public function itConvertsResponseDataIntoLezResponse(): void
     {
         $stream = $this->prophesize(Stream::class);

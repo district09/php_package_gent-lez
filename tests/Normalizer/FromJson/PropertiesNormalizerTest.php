@@ -4,19 +4,21 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Normalizer\FromJson;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Normalizer\FromJson\PropertiesNormalizer;
 use District09\Gent\Lez\Value\Properties;
 
 /**
- * @covers \District09\Gent\Lez\Normalizer\FromJson\PropertiesNormalizer
+ * Tests District09\Gent\Lez\Normalizer\FromJson\PropertiesNormalizer.
  */
-class PropertiesNormalizerTest extends NormalizerTestBase
+#[CoversClass(PropertiesNormalizer::class)]
+final class PropertiesNormalizerTest extends NormalizerTestBase
 {
     /**
      * Properties is extracted from given data.
-     *
-     * @test
      */
+    #[Test]
     public function itExtractsPropertiesFromJsonData(): void
     {
         $json = $this->getDecodedFeatureCollection();

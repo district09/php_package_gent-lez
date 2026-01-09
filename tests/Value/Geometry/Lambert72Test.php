@@ -4,20 +4,24 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Value\Geometry;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use District09\Gent\Lez\Value\Geometry\AbstractCoordinate;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\DataProvider;
 use District09\Gent\Lez\Value\Geometry\Lambert72;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Value\Geometry\AbstractCoordinate
- * @covers \District09\Gent\Lez\Value\Geometry\Lambert72
+ * Tests District09\Gent\Lez\Value\Geometry\AbstractCoordinate and District09\Gent\Lez\Value\Geometry\Lambert72.
  */
-class Lambert72Test extends TestCase
+#[CoversClass(AbstractCoordinate::class)]
+#[CoversClass(Lambert72::class)]
+final class Lambert72Test extends TestCase
 {
     /**
      * Point can be created from x and y position.
-     *
-     * @test
      */
+    #[Test]
     public function itCanBeCreatedFromXAndYPosition(): void
     {
         $coordinate = Lambert72::fromXYPosition(97000.00, 171000.00);
@@ -36,10 +40,10 @@ class Lambert72Test extends TestCase
      * @param bool $shouldBeTheSame
      *   Should both objects be identified as the same.
      *
-     * @dataProvider sameValueProvider
      *
-     * @test
      */
+    #[DataProvider('sameValueProvider')]
+    #[Test]
     public function itIsTheSameValueWhenTheyShareXAndY(
         Lambert72 $value,
         Lambert72 $otherValue,
@@ -60,7 +64,7 @@ class Lambert72Test extends TestCase
      *   - Lambert72Point : The value to compare with.
      *   - bool : Should both values be seen as the same.
      */
-    public function sameValueProvider(): array
+    public static function sameValueProvider(): array
     {
         return [
             'Not the same if x values are different' => [
@@ -83,9 +87,8 @@ class Lambert72Test extends TestCase
 
     /**
      * Cast to string results in x,y.
-     *
-     * @test
      */
+    #[Test]
     public function itCastToStringAsXYSeparatedByComma(): void
     {
         $coordinate = Lambert72::fromXYPosition(10.99, 20.01);

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Value;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\DataProvider;
 use District09\Gent\Lez\Value\Feature;
 use District09\Gent\Lez\Value\Features;
 use District09\Gent\Lez\Value\Geometry\Coordinates;
@@ -12,18 +15,18 @@ use District09\Gent\Lez\Value\Properties;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \District09\Gent\Lez\Value\Features
+ * Tests District09\Gent\Lez\Value\Features.
  */
-class FeaturesTest extends TestCase
+#[CoversClass(Features::class)]
+final class FeaturesTest extends TestCase
 {
     /**
      * Features is created from resource and one or more feature items.
-     *
-     * @test
      */
+    #[Test]
     public function itIsCreatedFromResourceAndFeatureItems(): void
     {
-        $featureItems = $this->createFeatureItems();
+        $featureItems = self::createFeatureItems();
 
         $features = Features::fromResourceAndFeatures(
             'FooBar',
@@ -43,17 +46,17 @@ class FeaturesTest extends TestCase
      * @param bool $same
      *   Both features should be the same.
      *
-     * @dataProvider otherFeaturesProvider
      *
-     * @test
      */
+    #[DataProvider('otherFeaturesProvider')]
+    #[Test]
     public function itIsSamePropertiesWhenTheyShareSameValues(
         Features $otherFeatures,
         bool $same
     ): void {
         $features = Features::fromResourceAndFeatures(
             'FooBar',
-            ...$this->createFeatureItems()
+            ...self::createFeatureItems()
         );
 
         self::assertSame($same, $features->sameValueAs($otherFeatures));
@@ -67,13 +70,13 @@ class FeaturesTest extends TestCase
      *   - The other properties to compare against.
      *   - Should be the same.
      */
-    public function otherFeaturesProvider(): array
+    public static function otherFeaturesProvider(): array
     {
         return [
             'Not the same when the resources are different' => [
                 Features::fromResourceAndFeatures(
                     'FizzBuzz',
-                    ...$this->createFeatureItems()
+                    ...self::createFeatureItems()
                 ),
                 false,
             ],
@@ -87,7 +90,7 @@ class FeaturesTest extends TestCase
             'Same when Properties and Geometry is the same value' => [
                 Features::fromResourceAndFeatures(
                     'FooBar',
-                    ...$this->createFeatureItems()
+                    ...self::createFeatureItems()
                 ),
                 true,
             ],
@@ -96,9 +99,8 @@ class FeaturesTest extends TestCase
 
     /**
      * The string value contains only the resource identifier.
-     *
-     * @test
      */
+    #[Test]
     public function itCanBeCastedToString(): void
     {
         $features = Features::fromResourceAndFeatures(
@@ -114,7 +116,7 @@ class FeaturesTest extends TestCase
      *
      * @return \District09\Gent\Lez\Value\Feature[]
      */
-    private function createFeatureItems(): array
+    private static function createFeatureItems(): array
     {
         return [
             Feature::fromPropertiesAndGeometry(

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Normalizer\FromJson;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Normalizer\FromJson\GeometryNormalizer;
 use District09\Gent\Lez\Normalizer\UnsupportedGeometry;
 use District09\Gent\Lez\Value\Geometry\Coordinates;
@@ -11,15 +13,15 @@ use District09\Gent\Lez\Value\Geometry\Lambert72;
 use District09\Gent\Lez\Value\Geometry\Polygon;
 
 /**
- * @covers \District09\Gent\Lez\Normalizer\FromJson\GeometryNormalizer
+ * Tests District09\Gent\Lez\Normalizer\FromJson\GeometryNormalizer.
  */
-class GeometryNormalizerTest extends NormalizerTestBase
+#[CoversClass(GeometryNormalizer::class)]
+final class GeometryNormalizerTest extends NormalizerTestBase
 {
     /**
      * AN exception is thrown when the given geometry is not supported.
-     *
-     * @test
      */
+    #[Test]
     public function itThrowsExceptionWhenGeometryTypeIsNotSupported(): void
     {
         $json = (object)['type' => 'foobar'];
@@ -31,9 +33,8 @@ class GeometryNormalizerTest extends NormalizerTestBase
 
     /**
      * Polygon geometry is extracted from given data.
-     *
-     * @test
      */
+    #[Test]
     public function itExtractsPolygonFromJsonData(): void
     {
         $json = $this->getDecodedFeatureCollection();

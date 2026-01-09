@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Normalizer\FromJson;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use District09\Gent\Lez\Normalizer\FromJson\FeatureNormalizer;
 use District09\Gent\Lez\Value\Feature;
 use District09\Gent\Lez\Value\Geometry\Coordinates;
@@ -12,15 +14,15 @@ use District09\Gent\Lez\Value\Geometry\Polygon;
 use District09\Gent\Lez\Value\Properties;
 
 /**
- * @covers \District09\Gent\Lez\Normalizer\FromJson\FeatureNormalizer
+ * Tests District09\Gent\Lez\Normalizer\FromJson\FeatureNormalizer.
  */
-class FeatureNormalizerTest extends NormalizerTestBase
+#[CoversClass(FeatureNormalizer::class)]
+final class FeatureNormalizerTest extends NormalizerTestBase
 {
     /**
      * Feature is extracted from given data.
-     *
-     * @test
      */
+    #[Test]
     public function itExtractsFeatureFromJsonData(): void
     {
         $json = $this->getDecodedFeatureCollection();

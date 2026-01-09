@@ -18,7 +18,7 @@
     ],
     "homepage": "https://github.com/district09/php_package_d09-gent-lez",
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.3",
         "ext-json": "*",
         "digipolisgent/api-client": "^3.0",
         "digipolisgent/value": "^3.0",
@@ -26,7 +26,8 @@
         "webmozart/assert": "^1.9"
     },
     "require-dev": {
-        "district09/qa-php": "^1.0.1"
+        "district09/qa-php": "^2.2",
+        "rector/rector": "^2.3"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -42,8 +43,9 @@
     },
     "config": {
         "allow-plugins": {
-            "phpro/grumphp-shim": true,
-            "ergebnis/composer-normalize": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "phpro/grumphp-shim": true
         },
         "sort-packages": true
     },

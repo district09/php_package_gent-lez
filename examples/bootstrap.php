@@ -11,7 +11,7 @@ date_default_timezone_set('Europe/Brussels');
 
 // CLI only.
 if (PHP_SAPI !== 'cli') {
-    throw new \Exception(
+    throw new Exception(
         'This example should only be run from a Command Line Interface.'
     );
 }
@@ -19,7 +19,7 @@ if (PHP_SAPI !== 'cli') {
 // Get the local config file.
 $configFile = __DIR__ . '/config.php';
 if (!file_exists($configFile)) {
-    throw new \Exception(
+    throw new Exception(
         'Config file is missing. See examples/README.md how to create one.'
     );
 }

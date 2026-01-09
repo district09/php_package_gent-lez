@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use DigipolisGent\API\Client\ClientInterface;
 use District09\Gent\Lez\GentLez;
 use District09\Gent\Lez\GentLezFactory;
@@ -12,17 +14,17 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
 /**
- * @covers \District09\Gent\Lez\GentLezFactory
+ * Tests District09\Gent\Lez\GentLezFactory.
  */
-class GentLezFactoryTest extends TestCase
+#[CoversClass(GentLezFactory::class)]
+final class GentLezFactoryTest extends TestCase
 {
     use ProphecyTrait;
 
     /**
      * The factored client contains all handlers.
-     *
-     * @test
      */
+    #[Test]
     public function factoredClientContainsAllHandlers(): void
     {
         $client = $this->prophesize(ClientInterface::class);
