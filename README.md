@@ -10,6 +10,11 @@ Low Emission Zone (LEZ). This is a PHP wrapper around a GIS webservice.
 [![CI test main][github-ci-badge-main]][github-ci-link]
 [![CI test develop][github-ci-badge-develop]][github-ci-link]
 
+## Supported NucleusSpatial versions
+
+- The current version (3+) of this package is compatible with NucleusSpatial v2.
+- Use version 2.x of this package for NucleusSpatial v1.
+
 ## Install
 
 Install the package using composer:

@@ -23,6 +23,9 @@ final class Configuration extends BaseConfiguration implements ConfigurationInte
      */
     public function __construct(string $endpointUri, ?string $userKey, array $options = [])
     {
+        if (\substr($endpointUri, -1) !== '/') {
+            $endpointUri .= '/';
+        }
         parent::__construct($endpointUri, $options);
 
         $this->userKey = $userKey;

@@ -1,0 +1,20 @@
+[
+    {
+        "resourceName": "Gent.LEZ",
+        "count": 1,
+        "keyProperty": "urid",
+        "geometryProperties": [
+            ".Shape"
+        ],
+        "items": [
+            {
+                "OBJECTID": 2,
+                "GENTID": "LEZ1",
+                "urid": "milieu/lez11",
+                "Shape": "POLYGON ((105480.21567926178 192222.4694100318, 105480.27274971509 192222.471295981, 105480.32961947982 192222.47643634162), (105607.66012646073 192253.3581606365, 105607.6645355909 192253.411385992, 105607.66609680449 192253.46477083542))",
+                "extra_intersectionArea1": 0,
+                "extra_distance1": 0
+            }
+        ]
+    }
+]

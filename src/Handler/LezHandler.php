@@ -26,10 +26,15 @@ final class LezHandler implements HandlerInterface
 
     /**
      * @inheritDoc
+     * @throws \JsonException
      */
     public function toResponse(Psr\ResponseInterface $response): ResponseInterface
     {
-        $data = json_decode($response->getBody()->getContents());
+        $data = json_decode(
+            json: $response->getBody()->getContents(),
+            associative: false,
+            flags: JSON_THROW_ON_ERROR
+        );
         $normalizer = new FeaturesNormalizer();
 
         return new LezResponse(

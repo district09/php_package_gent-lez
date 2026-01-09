@@ -27,7 +27,7 @@ final class LezRequestTest extends TestCase
         $request = new LezRequest($coordinates);
 
         self::assertEquals(
-            'pbuffer?wkid=31370&pointx=100&pointy=1000&bufferdistance=1',
+            'pointbuffer?wkid=31370&pointx=100&pointy=1000&bufferdistance=1',
             $request->getRequestTarget()
         );
     }

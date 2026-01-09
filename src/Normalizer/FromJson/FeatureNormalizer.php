@@ -21,8 +21,8 @@ final class FeatureNormalizer
     public function normalize(object $jsonData): Feature
     {
         return Feature::fromPropertiesAndGeometry(
-            (new PropertiesNormalizer())->normalize($jsonData->properties),
-            (new GeometryNormalizer())->normalize($jsonData->geometry)
+            (new PropertiesNormalizer())->normalize($jsonData),
+            (new GeometryNormalizer())->normalize($jsonData->Shape)
         );
     }
 }

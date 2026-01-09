@@ -15,20 +15,23 @@ final class FeaturesNormalizer
     /**
      * Normalize the json data.
      *
-     * @param object $jsonData
+     * @param array $jsonData
      *
      * @return \District09\Gent\Lez\Value\FeaturesInterface
      */
-    public function normalize(object $jsonData): FeaturesInterface
+    public function normalize(array $jsonData): FeaturesInterface
     {
         $featureNormalizer = new FeatureNormalizer();
         $features = [];
-        foreach ($jsonData->features as $featureData) {
+
+        $list = reset($jsonData);
+        $items = $list->items ?? [];
+        foreach ($items as $featureData) {
             $features[] = $featureNormalizer->normalize($featureData);
         }
 
         return Features::fromResourceAndFeatures(
-            $jsonData->resource,
+            $list->resourceName,
             ...$features
         );
     }

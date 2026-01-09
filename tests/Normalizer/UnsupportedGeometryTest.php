@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace District09\Tests\Gent\Lez\Normalizer;
 
+use District09\Gent\Lez\Normalizer\UnsupportedGeometry;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
-use District09\Gent\Lez\Normalizer\UnsupportedGeometry;
 use PHPUnit\Framework\TestCase;
 
 /**
