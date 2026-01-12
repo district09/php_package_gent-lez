@@ -2,6 +2,12 @@
 
 All Notable changes to the `district09/gent-lez` package.
 
+## [Unreleased]
+
+### Changed
+
+- VG-2746: Change user-key header to appKey.
+
 ## [3.0.0]
 
 ### Added

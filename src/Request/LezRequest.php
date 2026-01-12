@@ -23,7 +23,7 @@ final class LezRequest extends AbstractJsonRequest
         $lambert72 = $this->convertToLambert72($coordinates);
 
         $uri = sprintf(
-            'pointbuffer?wkid=31370&pointx=%s&pointy=%s&bufferdistance=1',
+            'spatial/Gent.LEZ/pointbuffer?wkid=31370&pointx=%s&pointy=%s&bufferdistance=1',
             $lambert72->xPosition(),
             $lambert72->yPosition()
         );
