@@ -12,30 +12,31 @@ use DigipolisGent\API\Client\Configuration\Configuration as BaseConfiguration;
 final class Configuration extends BaseConfiguration implements ConfigurationInterface
 {
     /**
-     * The API user key.
+     * Create configuration by its parameters.
      *
-     * @var string|null
+     * @param string $endpointUri
+     *   The base endpoint URI.
+     * @param array|null $options
+     *    The client options.
+     * @param string|null $apiKey
+     *   The API key to use (if any).
      */
-    private $userKey;
-
-    /**
-     * @inheritDoc
-     */
-    public function __construct(string $endpointUri, ?string $userKey, array $options = [])
-    {
-        if (\substr($endpointUri, -1) !== '/') {
+    public function __construct(
+        string $endpointUri,
+        ?array $options = [],
+        private ?string $apiKey = null,
+    ) {
+        if (!str_ends_with($endpointUri, '/')) {
             $endpointUri .= '/';
         }
-        parent::__construct($endpointUri, $options);
-
-        $this->userKey = $userKey;
+        parent::__construct($endpointUri, $options ?? []);
     }
 
     /**
      * @inheritDoc
      */
-    public function userKey(): ?string
+    public function apiKey(): ?string
     {
-        return $this->userKey;
+        return $this->apiKey;
     }
 }

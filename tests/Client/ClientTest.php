@@ -32,11 +32,11 @@ final class ClientTest extends TestCase
     public function noApiUserKeyAddedIfNoValueInConfiguration(): void
     {
         $configuration = $this->prophesize(ConfigurationInterface::class);
-        $configuration->userKey()->willReturn('');
+        $configuration->apiKey()->willReturn('');
 
         $finalRequestMock = $this->prophesize(RequestInterface::class);
         $finalRequestMock
-            ->withHeader('user-key', Argument::any())
+            ->withHeader('apiKey', Argument::any())
             ->shouldNotBeCalled();
         $finalRequest = $finalRequestMock->reveal();
 
@@ -71,16 +71,16 @@ final class ClientTest extends TestCase
      * API Key is send as header.
      */
     #[Test]
-    public function apiUserKeyIsSendAsHeader()
+    public function apiUserKeyIsSendAsHeader(): void
     {
         $configuration = $this->prophesize(ConfigurationInterface::class);
-        $configuration->userKey()->willReturn('fiz-baz-key');
+        $configuration->apiKey()->willReturn('fiz-baz-key');
 
         $finalRequest = $this->prophesize(RequestInterface::class)->reveal();
 
         $requestWithUserKey = $this->prophesize(RequestInterface::class);
         $requestWithUserKey
-            ->withHeader('user-key', 'fiz-baz-key')
+            ->withHeader('apiKey', 'fiz-baz-key')
             ->willReturn($finalRequest)
             ->shouldBeCalled();
 

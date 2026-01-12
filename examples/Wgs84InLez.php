@@ -12,7 +12,7 @@ use District09\Gent\Lez\Value\Geometry\Wgs84;
 require_once __DIR__ . '/bootstrap.php';
 
 /** @var string $apiEndpoint */
-/** @var string $apiUserKey */
+/** @var string $apiKey */
 
 printTitle('Check if given WGS84 coordinate is within Gent LEZ.');
 
@@ -31,7 +31,7 @@ if (is_null($latitude) || is_null($longitude)) {
 }
 
 printStep('Create the API client configuration.');
-$configuration = new Configuration($apiEndpoint, $apiUserKey);
+$configuration = new Configuration(endpointUri: $apiEndpoint, apiKey: $apiKey);
 
 printStep('Create the Guzzle client.');
 $guzzleClient = new GuzzleHttp\Client(['base_uri' => $configuration->getUri()]);

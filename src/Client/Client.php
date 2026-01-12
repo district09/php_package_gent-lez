@@ -42,10 +42,10 @@ final class Client extends AbstractClient
 
         /** @var \District09\Gent\Lez\Configuration\ConfigurationInterface $configuration */
         $configuration = $this->configuration;
-        if (!empty($configuration->userKey())) {
+        if (!empty($configuration->apiKey())) {
             $request = $request->withHeader(
-                'user-key',
-                $configuration->userKey()
+                'apiKey',
+                $configuration->apiKey()
             );
         }
 

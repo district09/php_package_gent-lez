@@ -7,9 +7,9 @@ and how to retrieve data from the webservice.
 
 The examples require the `config.php` file being in place and filled in.
 
-Copy the `config.example.php` file to `config.php` and fill in the
-values. Do not alter the example scripts, all variables are defined in
-the `config.php` file.
+Copy the `config.example.php` file to `config.php` and fill in the values. Do
+not alter the example scripts, all variables are defined in the `config.php`
+file.
 
 Install the libraries:
 

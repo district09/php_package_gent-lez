@@ -16,5 +16,5 @@ interface ConfigurationInterface extends BaseConfigurationInterface
      *
      * @return string|null
      */
-    public function userKey(): ?string;
+    public function apiKey(): ?string;
 }
