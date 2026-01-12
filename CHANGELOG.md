@@ -2,7 +2,7 @@
 
 All Notable changes to the `district09/gent-lez` package.
 
-## [Unreleased]
+## [3.0.1]
 
 ### Changed
 
@@ -53,6 +53,7 @@ Initial release of the service wrapper.
 - Added service method to check if a given Lambert72 or WGS84 coordinate is
   within the Gent Lez.
 
+[3.0.1]: https://github.com/district09/php_package_gent-lez/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/district09/php_package_gent-lez/compare/2.0.0...3.0.0
 [2.0.0]: https://github.com/district09/php_package_gent-lez/compare/1.0.0...2.0.0
 [1.0.0]: https://github.com/district09/php_package_gent-lez/releases/tag/1.0.0
