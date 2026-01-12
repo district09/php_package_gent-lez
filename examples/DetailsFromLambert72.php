@@ -12,7 +12,7 @@ use District09\Gent\Lez\Value\Geometry\Lambert72;
 require_once __DIR__ . '/bootstrap.php';
 
 /** @var string $apiEndpoint */
-/** @var string $apiUserKey */
+/** @var string|null $apiKey */
 
 printTitle('Get the LEZ details (if any) for a given Lambert72 coordinate.');
 
@@ -31,7 +31,7 @@ if (is_null($positionX) || is_null($positionY)) {
 }
 
 printStep('Create the API client configuration.');
-$configuration = new Configuration($apiEndpoint, $apiUserKey);
+$configuration = new Configuration(endpointUri: $apiEndpoint, apiKey: $apiKey);
 
 printStep('Create the Guzzle client.');
 $guzzleClient = new GuzzleHttp\Client(['base_uri' => $configuration->getUri()]);

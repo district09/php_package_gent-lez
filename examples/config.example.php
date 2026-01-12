@@ -7,5 +7,5 @@
 // The service endpoint.
 $apiEndpoint = '';
 
-// Optional api endpoint user key.
-$apiUserKey = null;
+// Optional api endpoint key.
+$apiKey = null;

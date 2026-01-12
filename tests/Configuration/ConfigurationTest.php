@@ -21,10 +21,13 @@ final class ConfigurationTest extends TestCase
     #[Test]
     public function itCanBeCreatedFromDetails(): void
     {
-        $configuration = new Configuration('https://endpoint/', 'api-user-key');
+        $configuration = new Configuration(
+            endpointUri: 'https://endpoint/',
+            apiKey: 'api-key',
+        );
 
         self::assertEquals('https://endpoint/', $configuration->getUri());
-        self::assertEquals('api-user-key', $configuration->userKey());
+        self::assertEquals('api-key', $configuration->apiKey());
     }
 
     /**
@@ -33,10 +36,13 @@ final class ConfigurationTest extends TestCase
     #[Test]
     public function itAddsSlashToEndpointUri(): void
     {
-        $configuration = new Configuration('https://endpoint', 'api-user-key');
+        $configuration = new Configuration(
+            endpointUri: 'https://endpoint',
+            apiKey: 'api-key',
+        );
 
         self::assertEquals('https://endpoint/', $configuration->getUri());
-        self::assertEquals('api-user-key', $configuration->userKey());
+        self::assertEquals('api-key', $configuration->apiKey());
     }
 
     /**
@@ -45,9 +51,11 @@ final class ConfigurationTest extends TestCase
     #[Test]
     public function itCanBeCreatedWithoutApiUserKey(): void
     {
-        $configuration = new Configuration('https://endpoint/', null);
+        $configuration = new Configuration(
+            endpointUri: 'https://endpoint/',
+        );
 
         self::assertEquals('https://endpoint/', $configuration->getUri());
-        self::assertNull($configuration->userKey());
+        self::assertNull($configuration->apiKey());
     }
 }
